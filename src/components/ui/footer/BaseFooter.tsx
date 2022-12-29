@@ -23,7 +23,7 @@ export const BaseFooter: FC<BaseFooterProps> = ({ ...props }) => {
       </Box>
       <Box textAlign="center" w="100%">
         <TbEyeglass />
-        <BaseText m="0"> ウォッチリスト</BaseText>
+        <BaseText m="0">ウォッチリスト</BaseText>
       </Box>
     </Flex>
   );
