@@ -1,1 +1,1 @@
-export * from './BaseFooter';
+export * from './Footer';

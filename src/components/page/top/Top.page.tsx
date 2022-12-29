@@ -4,7 +4,7 @@ import { memo } from 'react';
 import { TopContent } from '@/components/page/top/components/TopContent';
 import { useTopPageHook } from '@/components/page/top/hooks/useTopPageHook';
 import { BaseLayout, Header } from '@/components/ui';
-import { BaseFooter } from '@/components/ui/footer/BaseFooter';
+import { BaseFooter } from '@/components/ui/footer/Footer';
 
 const TopPage: NextPage = memo(() => {
   return (

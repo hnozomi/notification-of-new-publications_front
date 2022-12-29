@@ -1,5 +1,5 @@
-export const useWatchListHook = () => {
+export const useWatchListPageHook = () => {
   return {};
 };
 
-export type WatchListProps = ReturnType<typeof useWatchListHook>;
+export type WatchListProps = ReturnType<typeof useWatchListPageHook>;
