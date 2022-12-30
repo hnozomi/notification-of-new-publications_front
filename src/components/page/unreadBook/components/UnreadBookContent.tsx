@@ -1,25 +1,29 @@
-import { Box, Grid, GridItem, Spacer } from '@chakra-ui/react';
+import { Grid, GridItem } from '@chakra-ui/react';
 import { FC } from 'react';
 
-import { UnreadBookProps } from '@/components/page/unreadBook/hooks/UnreadBookPageHook';
+import { UnreadBookDeleteModal } from '@/components/model/unread/UnreadBookDeleteModal';
+import { useUnreadBookPageHook } from '@/components/page/unreadBook/hooks/UnreadBookPageHook';
 import { BookCard } from '@/components/ui';
 
-export const UnreadBookContent: FC<UnreadBookProps> = () => {
+export const UnreadBookContent: FC = () => {
+  const { modal } = useUnreadBookPageHook();
   return (
-    <Box>
-      <Spacer h="1rem" />
-      <Grid gap="1rem" p="1rem" templateColumns="repeat(3, 1fr)">
-        <GridItem h="10">
-          <BookCard />
+    <>
+      <Grid gap="2" mt="0.5rem" mx="0.3rem" templateColumns="repeat(3, 1fr)">
+        <GridItem>
+          <BookCard onOpen={modal.onOpen} />
         </GridItem>
-        <GridItem h="10">
-          <BookCard />
+        <GridItem>
+          <BookCard onOpen={modal.onOpen} />
         </GridItem>
-        <GridItem h="10">
-          <BookCard />
+        <GridItem>
+          <BookCard onOpen={modal.onOpen} />
+        </GridItem>
+        <GridItem>
+          <BookCard onOpen={modal.onOpen} />
         </GridItem>
       </Grid>
-      <Spacer h="1rem" />
-    </Box>
+      <UnreadBookDeleteModal {...modal} />
+    </>
   );
 };

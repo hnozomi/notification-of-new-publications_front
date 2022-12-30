@@ -1,21 +1,17 @@
-import { Box, Heading, HStack, Stack } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { FC } from 'react';
-import { FaTrash } from 'react-icons/fa';
 
-import { WatchListProps } from '@/components/page/watchList/hooks/useWatchListPageHook';
-import { BaseText } from '@/components/ui';
+import { ComicDeleteModal } from '@/components/model/watchList/ComicDeleteModal';
+import { ComicTitleList } from '@/components/model/watchList/ComicTitleList';
+import { useWatchListPageHook } from '@/components/page/watchList/hooks/useWatchListPageHook';
 
-export const WatchListContent: FC<WatchListProps> = () => {
+export const WatchListContent: FC = () => {
+  const { modal } = useWatchListPageHook();
+  console.log(modal);
   return (
-    <Box bgColor="pink" borderRadius="30%" m="1rem" p="2rem">
-      <HStack justifyContent="space-between">
-        <Stack>
-          <Heading m="0">ワンピース</Heading>
-          <BaseText>尾田栄一郎</BaseText>
-          <BaseText>34巻まで</BaseText>
-        </Stack>
-        <FaTrash />
-      </HStack>
+    <Box>
+      <ComicTitleList onOpen={modal.onOpen} />
+      <ComicDeleteModal {...modal} />
     </Box>
   );
 };

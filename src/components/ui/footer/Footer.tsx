@@ -1,4 +1,4 @@
-import { Box, Flex, StackProps } from '@chakra-ui/react';
+import { Box, Flex, Stack, StackProps } from '@chakra-ui/react';
 import { FC } from 'react';
 import { AiTwotoneHome } from 'react-icons/ai';
 import { IoIosAddCircle } from 'react-icons/io';
@@ -27,29 +27,29 @@ export const Footer: FC<FooterProps> = ({
       width="100%"
       {...props}
     >
-      <Box
+      <Stack
+        alignItems="center"
         opacity={selectedMenu === MENU_TYPE.UNREAD ? '100%' : '50%'}
-        p="1rem"
-        textAlign="center"
+        p="0.5rem"
         w="100%"
         onClick={() => switchMenu('unread')}
       >
         <AiTwotoneHome />
-        <BaseText m="0">ホーム</BaseText>
-      </Box>
+        <BaseText>ホーム</BaseText>
+      </Stack>
       <Box bottom="2rem" left="9.5rem" position="absolute" textAlign="center">
         <IoIosAddCircle color="blue" size="5rem" />
       </Box>
-      <Box
+      <Stack
+        alignItems="center"
         opacity={selectedMenu === MENU_TYPE.WATCHLIST ? '100%' : '50%'}
-        p="1rem"
-        textAlign="center"
+        p="0.5rem"
         w="100%"
         onClick={() => switchMenu('watchList')}
       >
         <TbEyeglass />
-        <BaseText m="0">ウォッチリスト</BaseText>
-      </Box>
+        <BaseText>ウォッチリスト</BaseText>
+      </Stack>
     </Flex>
   );
 };
