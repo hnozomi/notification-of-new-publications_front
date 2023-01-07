@@ -6,7 +6,6 @@ import { UnreadBookContent } from '@/components/page/unreadBook/components/Unrea
 import { WatchListContent } from '@/components/page/watchList/components/WatchListContent';
 import { BaseLayout, Header } from '@/components/ui';
 import { Footer } from '@/components/ui/footer/Footer';
-import { useSearchBooks } from '@/network/api/search/useSearch';
 import { MENU_TYPE } from '@/types';
 
 const TopPage: NextPage = memo(() => {
@@ -16,15 +15,6 @@ const TopPage: NextPage = memo(() => {
   const switchMenu = (menu: MENU_TYPE) => {
     setSelectedMenu(menu);
   };
-
-  const { data, refetch: onSearch } = useSearchBooks(
-    { query: { entity: 'watchList', title: 'ナルト' } },
-    {
-      enabled: false,
-    },
-  );
-
-  console.log(data, 'data');
 
   return (
     <>
