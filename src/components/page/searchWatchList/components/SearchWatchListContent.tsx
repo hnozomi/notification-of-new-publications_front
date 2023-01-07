@@ -13,11 +13,11 @@ import {
 import Link from 'next/link';
 import { FC } from 'react';
 
-import { SearchPageProps } from '@/components/page/search/hooks/useSearchPageHook';
+import { SearchWatchListPageProps } from '@/components/page/searchWatchList/hooks/useSearchWatchListPageHook';
 import { BaseText } from '@/components/ui';
 import { SearchFooter } from '@/components/ui/footer/SearchFooter';
 
-export const SearchContent: FC<SearchPageProps> = ({
+export const SearchWatchListContent: FC<SearchWatchListPageProps> = ({
   api,
   onSearch,
   selectedBook,
@@ -43,7 +43,6 @@ export const SearchContent: FC<SearchPageProps> = ({
             onChange={(e) => setSearchTitle(e.target.value)}
             onKeyDown={(e) => onSearch(e)}
           />
-          {/* <Button onClick={onSearch}>検索</Button> */}
         </InputGroup>
       </HStack>
       {api.fetchStatus === 'fetching' && api.status === 'loading' ? (

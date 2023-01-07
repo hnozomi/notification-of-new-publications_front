@@ -3,7 +3,7 @@ import { KeyboardEvent, useState } from 'react';
 import { SearchResults } from '@/entity';
 import { useSearchBooks } from '@/network/api/search/useSearch';
 
-export const useSearchPageHook = () => {
+export const useSearchUnreadBookPageHook = () => {
   const [searchTitle, setSearchTitle] = useState('');
   const [selectedBook, setSelectedBook] = useState<SearchResults>({
     author: '',
@@ -17,7 +17,7 @@ export const useSearchPageHook = () => {
     refetch,
     status,
   } = useSearchBooks(
-    { query: { entity: 'watchList', title: searchTitle } },
+    { query: { entity: 'UnreadBook', title: searchTitle } },
     {
       enabled: false,
     },
@@ -29,8 +29,6 @@ export const useSearchPageHook = () => {
       refetch();
     }
   };
-
-  console.log(selectedBook);
 
   return {
     api: {
@@ -45,4 +43,6 @@ export const useSearchPageHook = () => {
   };
 };
 
-export type SearchPageProps = ReturnType<typeof useSearchPageHook>;
+export type SearchUnreadBookPageProps = ReturnType<
+  typeof useSearchUnreadBookPageHook
+>;
