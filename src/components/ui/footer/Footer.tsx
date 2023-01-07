@@ -1,4 +1,5 @@
 import { Flex, Stack, StackProps } from '@chakra-ui/react';
+import Link from 'next/link';
 import { FC } from 'react';
 import { AiTwotoneHome } from 'react-icons/ai';
 import { IoIosAddCircle } from 'react-icons/io';
@@ -42,7 +43,9 @@ export const Footer: FC<FooterProps> = ({
         <BaseText>ホーム</BaseText>
       </Stack>
       <Stack textAlign="center" onClick={onOpen}>
-        <IoIosAddCircle size="3rem" />
+        <Link href="/search">
+          <IoIosAddCircle size="3rem" />
+        </Link>
       </Stack>
       <Stack
         alignItems="center"

@@ -1,6 +1,6 @@
 import { SearchResults } from '@/entity';
 import { SearchRepository } from '@/network/api/search/searchRepository';
-import { PathQuery, useAppQuery } from '@/network/useApi';
+import { Options, PathQuery, useAppQuery } from '@/network/useApi';
 
 const Repository = SearchRepository;
 
@@ -12,9 +12,12 @@ type SearchRequest = {
   title: string;
 };
 type SearchResponse = SearchResults[];
-export const useGetCustomers = (query: PathQuery<SearchRequest>) => {
+export const useSearchBooks = (
+  query: PathQuery<SearchRequest>,
+  options?: Options,
+) => {
   const { get } = Repository();
   const _get: () => Promise<SearchResponse> = get;
 
-  return useAppQuery(Repository.name, _get, query);
+  return useAppQuery(Repository.name, _get, query, options);
 };

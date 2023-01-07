@@ -2,13 +2,10 @@ import { Grid, GridItem, Spinner } from '@chakra-ui/react';
 import { FC } from 'react';
 
 import { UnreadBookDeleteModal } from '@/components/model/unread/UnreadBookDeleteModal';
-import {
-  UnreadBookProps,
-  useUnreadBookPageHook,
-} from '@/components/page/unreadBook/hooks/UnreadBookPageHook';
+import { useUnreadBookPageHook } from '@/components/page/unreadBook/hooks/UnreadBookPageHook';
 import { BookCard } from '@/components/ui';
 
-export const UnreadBookContent: FC<UnreadBookProps> = () => {
+export const UnreadBookContent: FC = () => {
   const { modal, unreadBooks } = useUnreadBookPageHook();
 
   return (
