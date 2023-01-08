@@ -2,7 +2,7 @@ import { UnreadComics } from '@/entity/unreadComics';
 import { WatchLists } from '@/entity/watchLists';
 
 export type Account = {
-  unreadComics: UnreadComics;
+  unreadComics: UnreadComics[];
   userId: string;
-  watchLists: WatchLists;
+  watchLists: WatchLists[];
 };

@@ -1,5 +1,6 @@
 import { ChevronLeftIcon, PhoneIcon } from '@chakra-ui/icons';
 import {
+  Box,
   Card,
   Center,
   HStack,
@@ -51,7 +52,7 @@ export const SearchUnreadBookContent: FC<SearchUnreadBookPageProps> = ({
           <Spinner />
         </Center>
       ) : (
-        <>
+        <Box h="90%" sx={{ overflow: 'scroll', overflowX: 'hidden' }}>
           {api.books?.length === 0 ? (
             <BaseText>検索結果: 0件</BaseText>
           ) : (
@@ -80,7 +81,7 @@ export const SearchUnreadBookContent: FC<SearchUnreadBookPageProps> = ({
               </Card>
             ))
           )}
-        </>
+        </Box>
       )}
       <SearchFooter comics={selectedBook} onRegister={onRegister} />
     </>

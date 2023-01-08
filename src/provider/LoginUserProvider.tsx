@@ -6,6 +6,7 @@ import { database } from '@/lib';
 
 export type LoginUserContextType = {
   loginAccount?: Account;
+  onFetchAccount: VoidFunction;
 };
 
 export const AuthContext = createContext<LoginUserContextType>(
@@ -44,6 +45,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     <AuthContext.Provider
       value={{
         loginAccount,
+        onFetchAccount,
       }}
     >
       {screenLoading && children}

@@ -1,9 +1,15 @@
-import { KeyboardEvent, useState } from 'react';
+import { ref, set } from 'firebase/database';
+import { useRouter } from 'next/router';
+import { KeyboardEvent, useContext, useState } from 'react';
 
 import { SearchResults } from '@/entity';
+import { database } from '@/lib';
 import { useSearchBooks } from '@/network/api/search/useSearch';
+import { AuthContext } from '@/provider';
 
 export const useSearchUnreadBookPageHook = () => {
+  const { loginAccount, onFetchAccount } = useContext(AuthContext);
+  const router = useRouter();
   const [searchTitle, setSearchTitle] = useState('');
   const [selectedBook, setSelectedBook] = useState<SearchResults>({
     author: '',
@@ -25,16 +31,17 @@ export const useSearchUnreadBookPageHook = () => {
 
   const onSearch = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      console.log(searchTitle);
       refetch();
     }
   };
 
   const onRegister = (newComic: SearchResults) => {
-    console.log(books);
-    console.log(newComic);
-    // const pathRef = ref(database, 'user/unreadComic');
-    // set(pathRef, item);
+    if (!loginAccount) return;
+    const newComics = [...loginAccount.unreadComics, newComic];
+    const pathRef = ref(database, 'user/unreadComics');
+    set(pathRef, newComics);
+    onFetchAccount();
+    router.push('/');
   };
 
   return {

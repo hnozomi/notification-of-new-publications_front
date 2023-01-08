@@ -1,13 +1,16 @@
 import { useDisclosure } from '@chakra-ui/react';
+import { useContext } from 'react';
 
-import { useGetFirebase } from '@/hooks';
+import { AuthContext } from '@/provider';
 
 export const useUnreadComicPageHook = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
-  const { unreadComics } = useGetFirebase();
-  // const { loginAccount } = useContext(AuthContext);
+  const { loginAccount } = useContext(AuthContext);
 
-  return { modal: { isOpen, onClose, onOpen }, unreadComics };
+  return {
+    modal: { isOpen, onClose, onOpen },
+    unreadComics: loginAccount?.unreadComics,
+  };
 };
 
 export type UnreadBookProps = ReturnType<typeof useUnreadComicPageHook>;

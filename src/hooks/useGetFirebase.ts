@@ -28,7 +28,7 @@ export const useGetFirebase = () => {
         title: 'ナルト',
       },
     ];
-    const pathRef = ref(database, 'user/unreadComics');
+    const pathRef = ref(database, 'user/watchList');
     // set(pathRef, item);
     onValue(
       pathRef,

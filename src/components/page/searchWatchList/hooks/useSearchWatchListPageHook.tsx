@@ -1,11 +1,15 @@
+import { ref, set } from 'firebase/database';
+import { useRouter } from 'next/router';
 import { KeyboardEvent, useContext, useState } from 'react';
 
 import { SearchResults } from '@/entity';
+import { database } from '@/lib';
 import { useSearchBooks } from '@/network/api/search/useSearch';
 import { AuthContext } from '@/provider';
 
 export const useSearchWatchListPageHook = () => {
-  const { loginAccount } = useContext(AuthContext);
+  const { loginAccount, onFetchAccount } = useContext(AuthContext);
+  const router = useRouter();
 
   const [searchTitle, setSearchTitle] = useState('');
   const [selectedBook, setSelectedBook] = useState<SearchResults>({
@@ -28,16 +32,20 @@ export const useSearchWatchListPageHook = () => {
 
   const onSearch = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      console.log(searchTitle);
       refetch();
     }
   };
 
   const onRegister = (newComic: SearchResults) => {
-    console.log(books);
-    console.log(newComic);
-    // const pathRef = ref(database, 'user/notifyComic');
-    // set(pathRef, item);
+    if (!loginAccount) return;
+    const newWatchList = [
+      ...loginAccount.watchLists,
+      { ...newComic, volume: 0 },
+    ];
+    const pathRef = ref(database, 'user/watchLists');
+    set(pathRef, newWatchList);
+    onFetchAccount();
+    router.push('/');
   };
 
   return {

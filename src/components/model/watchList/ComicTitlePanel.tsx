@@ -1,12 +1,26 @@
-import { HStack } from '@chakra-ui/react';
+import { Button, HStack, Stack } from '@chakra-ui/react';
 import { FC } from 'react';
 import { FaTrash } from 'react-icons/fa';
 
 import { BaseCard, BaseCardBody, BaseText } from '@/components/ui';
+import { WatchLists } from '@/entity';
 
-type Props = { book: { title: string; volume: string }; onOpen: () => void };
+type Props = {
+  deleteOnOpen: () => void;
+  index: number;
+  onUpdate: (index: number, targetComic: number) => void;
+  setIsEditable: any;
+  updateOnOpen: (volume: number) => void;
+  watchList: WatchLists;
+};
 
-export const ComicTitlePanel: FC<Props> = ({ book, onOpen }) => {
+export const ComicTitlePanel: FC<Props> = ({
+  deleteOnOpen,
+  index,
+  onUpdate,
+  updateOnOpen,
+  watchList,
+}) => {
   return (
     <BaseCard
       bg="silver"
@@ -16,11 +30,16 @@ export const ComicTitlePanel: FC<Props> = ({ book, onOpen }) => {
     >
       <BaseCardBody>
         <HStack justifyContent="space-between">
-          <HStack>
-            <BaseText fontWeight="bold">{book.title}</BaseText>
-            <BaseText>{`${book.volume}巻まで`}</BaseText>
-          </HStack>
-          <FaTrash onClick={onOpen} />
+          <Stack>
+            <BaseText fontWeight="bold">{watchList.title}</BaseText>
+            <HStack>
+              <BaseText fontSize="12px">{`${watchList.volume}巻まで`}</BaseText>
+              <Button size="xs" onClick={() => updateOnOpen(index)}>
+                巻数を更新
+              </Button>
+            </HStack>
+          </Stack>
+          <FaTrash onClick={deleteOnOpen} />
         </HStack>
       </BaseCardBody>
     </BaseCard>

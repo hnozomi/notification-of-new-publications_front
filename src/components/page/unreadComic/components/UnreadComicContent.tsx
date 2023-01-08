@@ -11,7 +11,14 @@ export const UnreadComicContent: FC = () => {
   return (
     <>
       {unreadComics ? (
-        <Grid gap="2" mt="0.5rem" mx="0.3rem" templateColumns="repeat(3, 1fr)">
+        <Grid
+          gap="2"
+          h="90%"
+          mt="0.5rem"
+          mx="0.3rem"
+          sx={{ overflow: 'scroll', overflowX: 'hidden' }}
+          templateColumns="repeat(3, 1fr)"
+        >
           {unreadComics.map((comic) => (
             <GridItem key={comic.title}>
               <BookCard book={comic} onOpen={modal.onOpen} />
