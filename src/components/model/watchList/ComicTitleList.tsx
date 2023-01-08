@@ -6,7 +6,6 @@ import { WatchLists } from '@/entity';
 type Props = {
   deleteOnOpen: () => void;
   onUpdate: (index: number, targetComic: number) => void;
-  setIsEditable: any;
   updateOnOpen: (volume: number) => void;
   watchLists?: WatchLists[];
 };
@@ -14,7 +13,6 @@ type Props = {
 export const ComicTitleList: FC<Props> = ({
   deleteOnOpen,
   onUpdate,
-  setIsEditable,
   updateOnOpen,
   watchLists,
 }) => {
@@ -25,7 +23,6 @@ export const ComicTitleList: FC<Props> = ({
           deleteOnOpen={deleteOnOpen}
           index={index}
           key={watchList.title}
-          setIsEditable={setIsEditable}
           updateOnOpen={updateOnOpen}
           watchList={watchList}
           onUpdate={onUpdate}

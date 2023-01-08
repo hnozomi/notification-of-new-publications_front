@@ -9,7 +9,6 @@ type Props = {
   deleteOnOpen: () => void;
   index: number;
   onUpdate: (index: number, targetComic: number) => void;
-  setIsEditable: any;
   updateOnOpen: (volume: number) => void;
   watchList: WatchLists;
 };

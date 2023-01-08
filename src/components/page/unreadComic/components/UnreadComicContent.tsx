@@ -13,7 +13,6 @@ export const UnreadComicContent: FC = () => {
       {unreadComics ? (
         <Grid
           gap="2"
-          h="90%"
           mt="0.5rem"
           mx="0.3rem"
           sx={{ overflow: 'scroll', overflowX: 'hidden' }}

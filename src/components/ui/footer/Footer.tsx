@@ -1,21 +1,17 @@
 import { Flex, Stack, StackProps } from '@chakra-ui/react';
-import Link from 'next/link';
 import { FC } from 'react';
 import { AiTwotoneHome } from 'react-icons/ai';
-import { IoIosAddCircle } from 'react-icons/io';
 import { TbEyeglass } from 'react-icons/tb';
 
 import { BaseText } from '@/components/ui/text';
 import { MENU_TYPE } from '@/types';
 
 export type FooterProps = StackProps & {
-  onOpen: () => void;
   selectedMenu: MENU_TYPE;
   switchMenu: (menu: MENU_TYPE) => void;
 };
 
 export const Footer: FC<FooterProps> = ({
-  onOpen,
   selectedMenu,
   switchMenu,
   ...props
@@ -41,11 +37,6 @@ export const Footer: FC<FooterProps> = ({
       >
         <AiTwotoneHome />
         <BaseText>ホーム</BaseText>
-      </Stack>
-      <Stack textAlign="center" onClick={onOpen}>
-        <Link href="/search">
-          <IoIosAddCircle size="3rem" />
-        </Link>
       </Stack>
       <Stack
         alignItems="center"

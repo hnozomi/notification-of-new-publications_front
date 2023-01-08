@@ -16,7 +16,6 @@ export const useWatchListPageHook = () => {
     onClose: updateOnClose,
     onOpen: updateOnOpen,
   } = useDisclosure();
-  const [isEditable, setIsEditable] = useState(false);
   const [targetComic, setTargetComic] = useState(0);
   const [volume, setVolume] = useState(0);
   const { loginAccount, onFetchAccount } = useContext(AuthContext);
@@ -39,7 +38,6 @@ export const useWatchListPageHook = () => {
   return {
     deleteModal: { deleteIsOpen, deleteOnClose, deleteOnOpen },
     onUpdate,
-    setIsEditable,
     setVolume,
     updateModal: { onUpdateModalOpenOpen, updateIsOpen, updateOnClose },
     watchLists: loginAccount?.watchLists,
