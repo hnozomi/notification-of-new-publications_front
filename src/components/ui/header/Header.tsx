@@ -1,5 +1,5 @@
 import { BoxProps, HStack } from '@chakra-ui/react';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { FC } from 'react';
 import { RiAddBoxLine } from 'react-icons/ri';
 
@@ -11,6 +11,7 @@ type HeaderProps = BoxProps & {
 };
 
 export const Header: FC<HeaderProps> = ({ selectedMenu, ...props }) => {
+  const router = useRouter();
   // MEMO このコンポーネントは具体的な実装を持っているが、特定のモデルに依存しないグローバルなコンポーネントのため例外的にUI以下に配置している
   return (
     <HStack as="header" bgColor="#DB8B33" p="1rem">
@@ -19,7 +20,17 @@ export const Header: FC<HeaderProps> = ({ selectedMenu, ...props }) => {
           ? '読んでいない本'
           : 'ウォッチリスト'}
       </BaseText>
-      <Link
+      <RiAddBoxLine
+        size="2rem"
+        onClick={() =>
+          router.push(
+            selectedMenu === MENU_TYPE.UNREAD
+              ? 'searchUnreadBook'
+              : 'searchWatchList',
+          )
+        }
+      />
+      {/* <Link
         href={
           selectedMenu === MENU_TYPE.UNREAD
             ? 'searchUnreadBook'
@@ -27,7 +38,7 @@ export const Header: FC<HeaderProps> = ({ selectedMenu, ...props }) => {
         }
       >
         <RiAddBoxLine size="2rem" />
-      </Link>
+      </Link> */}
     </HStack>
   );
 };

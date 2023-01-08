@@ -19,6 +19,7 @@ import { SearchFooter } from '@/components/ui/footer/SearchFooter';
 
 export const SearchUnreadBookContent: FC<SearchUnreadBookPageProps> = ({
   api,
+  onRegister,
   onSearch,
   selectedBook,
   setSearchTitle,
@@ -81,7 +82,7 @@ export const SearchUnreadBookContent: FC<SearchUnreadBookPageProps> = ({
           )}
         </>
       )}
-      <SearchFooter />
+      <SearchFooter comics={selectedBook} onRegister={onRegister} />
     </>
   );
 };

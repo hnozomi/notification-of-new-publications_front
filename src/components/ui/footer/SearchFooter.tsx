@@ -1,6 +1,14 @@
 import { Button, Stack } from '@chakra-ui/react';
+import { FC } from 'react';
 
-export const SearchFooter = () => {
+import { SearchResults } from '@/entity';
+
+type Props = {
+  comics: SearchResults;
+  onRegister: (newComic: SearchResults) => void;
+};
+
+export const SearchFooter: FC<Props> = ({ comics, onRegister }) => {
   return (
     <Stack
       bgColor="#FFFFFF"
@@ -11,7 +19,7 @@ export const SearchFooter = () => {
       py="0.5rem"
       width="100%"
     >
-      <Button colorScheme="blue" mx="1rem">
+      <Button colorScheme="blue" mx="1rem" onClick={() => onRegister(comics)}>
         登録
       </Button>
     </Stack>

@@ -17,7 +17,7 @@ export const useSearchUnreadBookPageHook = () => {
     refetch,
     status,
   } = useSearchBooks(
-    { query: { entity: 'UnreadBook', title: searchTitle } },
+    { query: { entity: 'unreadBook', title: searchTitle } },
     {
       enabled: false,
     },
@@ -30,12 +30,20 @@ export const useSearchUnreadBookPageHook = () => {
     }
   };
 
+  const onRegister = (newComic: SearchResults) => {
+    console.log(books);
+    console.log(newComic);
+    // const pathRef = ref(database, 'user/unreadComic');
+    // set(pathRef, item);
+  };
+
   return {
     api: {
       books,
       fetchStatus,
       status,
     },
+    onRegister,
     onSearch,
     selectedBook,
     setSearchTitle,
