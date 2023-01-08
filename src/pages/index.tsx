@@ -2,7 +2,7 @@ import { useDisclosure } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import { memo, useState } from 'react';
 
-import { UnreadBookContent } from '@/components/page/unreadBook/components/UnreadBookContent';
+import { UnreadComicContent } from '@/components/page/unreadComic/components/UnreadComicContent';
 import { WatchListContent } from '@/components/page/watchList/components/WatchListContent';
 import { BaseLayout, Header } from '@/components/ui';
 import { Footer } from '@/components/ui/footer/Footer';
@@ -20,7 +20,7 @@ const TopPage: NextPage = memo(() => {
     <>
       <BaseLayout header={<Header selectedMenu={selectedMenu} />}>
         {selectedMenu === 'unread' ? (
-          <UnreadBookContent />
+          <UnreadComicContent />
         ) : (
           <WatchListContent />
         )}

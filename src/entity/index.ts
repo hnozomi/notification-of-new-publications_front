@@ -1,4 +1,4 @@
 export * from './account';
 export * from './searchResults';
-export * from './unreadBooks';
+export * from './unreadComics';
 export * from './watchLists';

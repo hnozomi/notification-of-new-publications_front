@@ -3,9 +3,9 @@ import { FC } from 'react';
 
 import { BaseModal } from '@/components/ui';
 
-export type UnreadBookDeleteModalProps = Omit<ModalProps, 'children'>;
+export type UnreadComicDeleteModalProps = Omit<ModalProps, 'children'>;
 
-export const UnreadBookDeleteModal: FC<UnreadBookDeleteModalProps> = ({
+export const UnreadComicDeleteModal: FC<UnreadComicDeleteModalProps> = ({
   isOpen,
   onClose,
 }) => {

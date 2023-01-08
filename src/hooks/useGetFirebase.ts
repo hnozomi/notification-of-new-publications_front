@@ -1,11 +1,11 @@
 import { onValue, ref } from 'firebase/database';
 import { useEffect, useState } from 'react';
 
-import { UnreadBooks } from '@/entity';
+import { UnreadComics } from '@/entity';
 import { database } from '@/lib';
 
 export const useGetFirebase = () => {
-  const [unreadBooks, setUnreadBooks] = useState<UnreadBooks[]>([]);
+  const [unreadComics, setunreadComics] = useState<UnreadComics[]>([]);
 
   useEffect(() => {
     const item = [
@@ -28,14 +28,14 @@ export const useGetFirebase = () => {
         title: 'ナルト',
       },
     ];
-    const pathRef = ref(database, 'user/notifyComic');
+    const pathRef = ref(database, 'user/unreadComics');
     // set(pathRef, item);
     onValue(
       pathRef,
       (snapshot) => {
         //send new data to react with setData every time information changed on realtime db
         const newData = snapshot.val();
-        setUnreadBooks(newData);
+        setunreadComics(newData);
       },
       (error) => {
         console.log(error);
@@ -43,7 +43,7 @@ export const useGetFirebase = () => {
     );
   }, []);
 
-  console.log(unreadBooks);
+  console.log(unreadComics);
 
-  return { unreadBooks };
+  return { unreadComics };
 };

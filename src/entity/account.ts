@@ -1,8 +1,8 @@
-import { UnreadBooks } from '@/entity/unreadBooks';
+import { UnreadComics } from '@/entity/unreadComics';
 import { WatchLists } from '@/entity/watchLists';
 
 export type Account = {
-  unreadBooks: UnreadBooks;
+  unreadComics: UnreadComics;
   userId: string;
   watchLists: WatchLists;
 };
