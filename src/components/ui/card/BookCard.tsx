@@ -5,21 +5,27 @@ import { TiDelete } from 'react-icons/ti';
 import { BaseCard } from '@/components/ui/card/BaseCard';
 import { BaseCardBody } from '@/components/ui/card/BaseCardBody';
 import { BaseText } from '@/components/ui/text';
-import { UnreadBooks } from '@/entity';
+import { UnreadComics } from '@/entity';
 
 type BookCardProps = CardProps & {
-  book: UnreadBooks;
-  onOpen: () => void;
+  book: UnreadComics;
+  index: number;
+  onOpen: (deleteBook: number, title: string) => void;
 };
 
-export const BookCard: FC<BookCardProps> = ({ book, onOpen, ...props }) => {
+export const BookCard: FC<BookCardProps> = ({
+  book,
+  index,
+  onOpen,
+  ...props
+}) => {
   return (
-    <BaseCard {...props}>
-      <BaseCardBody p="0.3rem" zIndex="-1000">
+    <BaseCard {...props} h="12rem">
+      <BaseCardBody p="0.3rem">
         <TiDelete
           className="unreadBookDeleteIcon"
           size="1.7rem"
-          onClick={onOpen}
+          onClick={() => onOpen(index, book.title)}
         />
         <Image
           alt="漫画の表紙"

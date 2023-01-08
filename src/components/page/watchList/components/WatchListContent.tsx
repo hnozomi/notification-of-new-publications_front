@@ -7,20 +7,29 @@ import { ComicVolumeUpdateModal } from '@/components/model/watchList/ComicVolume
 import { useWatchListPageHook } from '@/components/page/watchList/hooks/useWatchListPageHook';
 
 export const WatchListContent: FC = () => {
-  const { deleteModal, onUpdate, setVolume, updateModal, watchLists } =
-    useWatchListPageHook();
+  const {
+    deleteModal,
+    onDelete,
+    onUpdate,
+    setVolume,
+    targetComicTitle,
+    updateModal,
+    watchLists,
+  } = useWatchListPageHook();
 
   return (
-    <Box h="90%" sx={{ overflow: 'scroll', overflowX: 'hidden' }}>
+    <Box h="80%" sx={{ overflow: 'scroll', overflowX: 'hidden' }}>
       <ComicTitleList
-        deleteOnOpen={deleteModal.deleteOnOpen}
+        deleteOnOpen={deleteModal.onDeleteModalOpen}
         updateOnOpen={updateModal.onUpdateModalOpenOpen}
         watchLists={watchLists}
         onUpdate={onUpdate}
       />
       <ComicDeleteModal
         isOpen={deleteModal.deleteIsOpen}
+        targetComicTitle={targetComicTitle}
         onClose={deleteModal.deleteOnClose}
+        onDelete={onDelete}
       />
       <ComicVolumeUpdateModal
         isOpen={updateModal.updateIsOpen}

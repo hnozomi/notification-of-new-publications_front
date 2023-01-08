@@ -14,13 +14,14 @@ export const Header: FC<HeaderProps> = ({ selectedMenu, ...props }) => {
   const router = useRouter();
   // MEMO このコンポーネントは具体的な実装を持っているが、特定のモデルに依存しないグローバルなコンポーネントのため例外的にUI以下に配置している
   return (
-    <HStack as="header" bgColor="#DB8B33" p="1rem">
-      <BaseText fontWeight="bold" textAlign="center" w="100%">
+    <HStack as="header" bgColor="#504CF9" p="1rem">
+      <BaseText color="white" fontWeight="bold" w="100%">
         {selectedMenu === MENU_TYPE.UNREAD
           ? '読んでいない本'
           : 'ウォッチリスト'}
       </BaseText>
       <RiAddBoxLine
+        color="white"
         size="2rem"
         onClick={() =>
           router.push(
@@ -30,15 +31,6 @@ export const Header: FC<HeaderProps> = ({ selectedMenu, ...props }) => {
           )
         }
       />
-      {/* <Link
-        href={
-          selectedMenu === MENU_TYPE.UNREAD
-            ? 'searchUnreadBook'
-            : 'searchWatchList'
-        }
-      >
-        <RiAddBoxLine size="2rem" />
-      </Link> */}
     </HStack>
   );
 };

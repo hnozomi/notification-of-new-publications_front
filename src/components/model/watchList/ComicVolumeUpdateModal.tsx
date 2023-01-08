@@ -17,7 +17,7 @@ export const ComicVolumeUpdateModal: FC<ComicVolumeUpdateModalProps> = ({
   return (
     <BaseModal
       footer={
-        <Button colorScheme="red" onClick={onUpdate}>
+        <Button colorScheme="blue" onClick={onUpdate}>
           更新する
         </Button>
       }
@@ -28,7 +28,10 @@ export const ComicVolumeUpdateModal: FC<ComicVolumeUpdateModalProps> = ({
       <Text fontWeight="bold" mb="1rem">
         巻数を入力してください
       </Text>
-      <Input onChange={(e) => setVolume(Number(e.target.value))} />
+      <Input
+        type="number"
+        onChange={(e) => setVolume(Number(e.target.value))}
+      />
     </BaseModal>
   );
 };

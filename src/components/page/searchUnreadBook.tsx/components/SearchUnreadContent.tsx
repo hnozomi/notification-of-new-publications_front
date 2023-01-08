@@ -1,4 +1,4 @@
-import { ChevronLeftIcon, PhoneIcon } from '@chakra-ui/icons';
+import { ChevronLeftIcon, SearchIcon } from '@chakra-ui/icons';
 import {
   Box,
   Card,
@@ -34,7 +34,7 @@ export const SearchUnreadBookContent: FC<SearchUnreadBookPageProps> = ({
         </Link>
         <InputGroup w="90%">
           <InputLeftElement pointerEvents="none">
-            <PhoneIcon color="black" />
+            <SearchIcon color="black" />
           </InputLeftElement>
           <Input
             bgColor="white"

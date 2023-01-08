@@ -4,7 +4,7 @@ import { ComicTitlePanel } from '@/components/model/watchList/ComicTitlePanel';
 import { WatchLists } from '@/entity';
 
 type Props = {
-  deleteOnOpen: () => void;
+  deleteOnOpen: (index: number, title: string) => void;
   onUpdate: (index: number, targetComic: number) => void;
   updateOnOpen: (volume: number) => void;
   watchLists?: WatchLists[];

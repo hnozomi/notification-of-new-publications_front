@@ -19,7 +19,12 @@ export const SearchFooter: FC<Props> = ({ comics, onRegister }) => {
       py="0.5rem"
       width="100%"
     >
-      <Button colorScheme="blue" mx="1rem" onClick={() => onRegister(comics)}>
+      <Button
+        colorScheme="blue"
+        disabled={comics.title === ''}
+        mx="1rem"
+        onClick={() => onRegister(comics)}
+      >
         登録
       </Button>
     </Stack>

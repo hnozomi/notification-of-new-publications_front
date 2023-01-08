@@ -17,12 +17,19 @@ export const useWatchListPageHook = () => {
     onOpen: updateOnOpen,
   } = useDisclosure();
   const [targetComic, setTargetComic] = useState(0);
+  const [targetComicTitle, setTargetComicTitle] = useState('');
   const [volume, setVolume] = useState(0);
   const { loginAccount, onFetchAccount } = useContext(AuthContext);
 
   const onUpdateModalOpenOpen = (newVolume: number) => {
     setTargetComic(newVolume);
     updateOnOpen();
+  };
+
+  const onDeleteModalOpen = (deleteBook: number, title: string) => {
+    setTargetComic(deleteBook);
+    setTargetComicTitle(title);
+    deleteOnOpen();
   };
 
   const onUpdate = () => {
@@ -35,10 +42,21 @@ export const useWatchListPageHook = () => {
     updateOnClose();
   };
 
+  const onDelete = () => {
+    const newWatchList = { ...loginAccount };
+    newWatchList.watchLists?.splice(targetComic, 1);
+    const pathRef = ref(database, 'user/watchLists');
+    set(pathRef, newWatchList.watchLists);
+    onFetchAccount();
+    deleteOnClose();
+  };
+
   return {
-    deleteModal: { deleteIsOpen, deleteOnClose, deleteOnOpen },
+    deleteModal: { deleteIsOpen, deleteOnClose, onDeleteModalOpen },
+    onDelete,
     onUpdate,
     setVolume,
+    targetComicTitle,
     updateModal: { onUpdateModalOpenOpen, updateIsOpen, updateOnClose },
     watchLists: loginAccount?.watchLists,
   };

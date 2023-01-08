@@ -21,13 +21,6 @@ const TopPage: NextPage = memo(() => {
       ) : (
         <WatchListContent />
       )}
-      {/* <BaseLayout header={<Header selectedMenu={selectedMenu} />}>
-        {selectedMenu === 'unread' ? (
-          <UnreadComicContent />
-        ) : (
-          <WatchListContent />
-        )}
-      </BaseLayout> */}
       <Footer selectedMenu={selectedMenu} switchMenu={switchMenu} />
     </>
   );

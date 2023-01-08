@@ -1,5 +1,6 @@
-import { ChevronLeftIcon, PhoneIcon } from '@chakra-ui/icons';
+import { ChevronLeftIcon, SearchIcon } from '@chakra-ui/icons';
 import {
+  Box,
   Card,
   Center,
   HStack,
@@ -33,7 +34,7 @@ export const SearchWatchListContent: FC<SearchWatchListPageProps> = ({
         </Link>
         <InputGroup w="90%">
           <InputLeftElement pointerEvents="none">
-            <PhoneIcon color="black" />
+            <SearchIcon color="black" />
           </InputLeftElement>
           <Input
             bgColor="white"
@@ -51,7 +52,7 @@ export const SearchWatchListContent: FC<SearchWatchListPageProps> = ({
           <Spinner />
         </Center>
       ) : (
-        <>
+        <Box h="80%" sx={{ overflow: 'scroll', overflowX: 'hidden' }}>
           {api.books?.length === 0 ? (
             <BaseText>検索結果: 0件</BaseText>
           ) : (
@@ -80,7 +81,7 @@ export const SearchWatchListContent: FC<SearchWatchListPageProps> = ({
               </Card>
             ))
           )}
-        </>
+        </Box>
       )}
       <SearchFooter comics={selectedBook} onRegister={onRegister} />
     </>
