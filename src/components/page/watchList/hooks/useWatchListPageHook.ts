@@ -36,18 +36,19 @@ export const useWatchListPageHook = () => {
     if (!loginAccount) return;
     const newWatchList = { ...loginAccount };
     newWatchList.watchLists[targetComic].volume = volume;
-    const pathRef = ref(database, 'user/watchLists');
+    const pathRef = ref(database, `user/${loginAccount.accountId}/watchLists`);
     set(pathRef, newWatchList.watchLists);
-    onFetchAccount();
+    onFetchAccount(loginAccount.userId);
     updateOnClose();
   };
 
   const onDelete = () => {
+    if (!loginAccount) return;
     const newWatchList = { ...loginAccount };
     newWatchList.watchLists?.splice(targetComic, 1);
-    const pathRef = ref(database, 'user/watchLists');
+    const pathRef = ref(database, `user/${loginAccount.accountId}/watchLists`);
     set(pathRef, newWatchList.watchLists);
-    onFetchAccount();
+    onFetchAccount(loginAccount.userId);
     deleteOnClose();
   };
 

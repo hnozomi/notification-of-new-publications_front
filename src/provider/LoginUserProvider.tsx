@@ -1,12 +1,20 @@
-import { onValue, ref } from 'firebase/database';
+import { onAuthStateChanged } from 'firebase/auth';
+import {
+  endAt,
+  onValue,
+  orderByChild,
+  query,
+  ref,
+  startAt,
+} from 'firebase/database';
 import { createContext, FC, ReactNode, useEffect, useState } from 'react';
 
 import { Account } from '@/entity';
-import { database } from '@/lib';
+import { auth, database } from '@/lib';
 
 export type LoginUserContextType = {
   loginAccount?: Account;
-  onFetchAccount: VoidFunction;
+  onFetchAccount: (uid: string) => void;
 };
 
 export const AuthContext = createContext<LoginUserContextType>(
@@ -20,16 +28,28 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const [screenLoading, setScreenLoading] = useState(false);
 
   useEffect(() => {
-    onFetchAccount();
+    onAuthStateChanged(auth, async (user: any) => {
+      user?.uid && onFetchAccount(user?.uid);
+    });
   }, []);
 
-  const onFetchAccount = () => {
-    const pathRef = ref(database, 'user');
+  const onFetchAccount = (uid: string) => {
+    const pathRef = query(
+      ref(database, `user`),
+      orderByChild('userId'),
+      startAt(uid),
+      endAt(uid),
+    );
+
     onValue(
       pathRef,
       (snapshot) => {
         const account = snapshot.val();
-        setLoginAccount(account);
+        const key = Object.keys(account);
+
+        const newAccount = { accountId: key[0], ...account[key[0]] };
+
+        setLoginAccount(newAccount);
         setScreenLoading(true);
       },
       (error) => {

@@ -37,10 +37,18 @@ export const useSearchUnreadBookPageHook = () => {
 
   const onRegister = (newComic: SearchResults) => {
     if (!loginAccount) return;
-    const newComics = [...loginAccount.unreadComics, newComic];
-    const pathRef = ref(database, 'user/unreadComics');
+
+    const nowWatchLists = loginAccount.unreadComics
+      ? loginAccount.watchLists
+      : [];
+
+    const newComics = [...nowWatchLists, newComic];
+    const pathRef = ref(
+      database,
+      `user/${loginAccount.accountId}/unreadComics`,
+    );
     set(pathRef, newComics);
-    onFetchAccount();
+    onFetchAccount(loginAccount.userId);
     router.push('/');
   };
 

@@ -38,13 +38,16 @@ export const useSearchWatchListPageHook = () => {
 
   const onRegister = (newComic: SearchResults) => {
     if (!loginAccount) return;
-    const newWatchList = [
-      ...loginAccount.watchLists,
-      { ...newComic, volume: 0 },
-    ];
-    const pathRef = ref(database, 'user/watchLists');
+
+    const nowWatchLists = loginAccount.watchLists
+      ? loginAccount.watchLists
+      : [];
+
+    const newWatchList = [...nowWatchLists, { ...newComic, volume: 0 }];
+
+    const pathRef = ref(database, `user/${loginAccount.accountId}/watchLists`);
     set(pathRef, newWatchList);
-    onFetchAccount();
+    onFetchAccount(loginAccount.userId);
     router.push('/');
   };
 

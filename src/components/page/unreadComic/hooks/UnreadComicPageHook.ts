@@ -23,11 +23,16 @@ export const useUnreadComicPageHook = () => {
   };
 
   const onDelete = () => {
+    if (!loginAccount) return;
+
     const newUnreadComics = { ...loginAccount };
     newUnreadComics.unreadComics?.splice(targetComic, 1);
-    const pathRef = ref(database, 'user/unreadComics');
+    const pathRef = ref(
+      database,
+      `user/${loginAccount.accountId}/unreadComics`,
+    );
     set(pathRef, newUnreadComics.unreadComics);
-    onFetchAccount();
+    onFetchAccount(loginAccount.userId);
     deleteOnClose();
   };
 
