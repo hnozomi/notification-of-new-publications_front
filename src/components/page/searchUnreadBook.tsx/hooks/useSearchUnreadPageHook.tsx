@@ -10,7 +10,7 @@ import { AuthContext } from '@/provider';
 export const useSearchUnreadBookPageHook = () => {
   const { loginAccount, onFetchAccount } = useContext(AuthContext);
   const router = useRouter();
-  const [searchTitle, setSearchTitle] = useState('');
+  const [searchComic, setSearchComic] = useState('');
   const [selectedBook, setSelectedBook] = useState<SearchResults>({
     author: '',
     largeImageUrl: '',
@@ -23,7 +23,7 @@ export const useSearchUnreadBookPageHook = () => {
     refetch,
     status,
   } = useSearchBooks(
-    { query: { entity: 'unreadBook', title: searchTitle } },
+    { query: { entity: 'unreadBook', title: searchComic } },
     {
       enabled: false,
     },
@@ -61,7 +61,7 @@ export const useSearchUnreadBookPageHook = () => {
     onRegister,
     onSearch,
     selectedBook,
-    setSearchTitle,
+    setSearchComic,
     setSelectedBook,
   };
 };

@@ -1,10 +1,10 @@
-import { Box } from '@chakra-ui/react';
 import { FC } from 'react';
 
 import { ComicDeleteModal } from '@/components/model/watchList/ComicDeleteModal';
 import { ComicTitleList } from '@/components/model/watchList/ComicTitleList';
 import { ComicVolumeUpdateModal } from '@/components/model/watchList/ComicVolumeUpdateModal';
 import { useWatchListPageHook } from '@/components/page/watchList/hooks/useWatchListPageHook';
+import { ScrollLayout } from '@/components/ui';
 
 export const WatchListContent: FC = () => {
   const {
@@ -18,7 +18,7 @@ export const WatchListContent: FC = () => {
   } = useWatchListPageHook();
 
   return (
-    <Box h="80%" sx={{ overflow: 'scroll', overflowX: 'hidden' }}>
+    <ScrollLayout>
       <ComicTitleList
         deleteOnOpen={deleteModal.onDeleteModalOpen}
         updateOnOpen={updateModal.onUpdateModalOpenOpen}
@@ -37,6 +37,6 @@ export const WatchListContent: FC = () => {
         onClose={updateModal.updateOnClose}
         onUpdate={onUpdate}
       />
-    </Box>
+    </ScrollLayout>
   );
 };

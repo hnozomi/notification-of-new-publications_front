@@ -11,7 +11,7 @@ export const useSearchWatchListPageHook = () => {
   const { loginAccount, onFetchAccount } = useContext(AuthContext);
   const router = useRouter();
 
-  const [searchTitle, setSearchTitle] = useState('');
+  const [searchComic, setSearchComic] = useState('');
   const [selectedBook, setSelectedBook] = useState<SearchResults>({
     author: '',
     largeImageUrl: '',
@@ -24,7 +24,7 @@ export const useSearchWatchListPageHook = () => {
     refetch,
     status,
   } = useSearchBooks(
-    { query: { entity: 'watchList', title: searchTitle } },
+    { query: { entity: 'watchList', title: searchComic } },
     {
       enabled: false,
     },
@@ -60,7 +60,7 @@ export const useSearchWatchListPageHook = () => {
     onRegister,
     onSearch,
     selectedBook,
-    setSearchTitle,
+    setSearchComic,
     setSelectedBook,
   };
 };
