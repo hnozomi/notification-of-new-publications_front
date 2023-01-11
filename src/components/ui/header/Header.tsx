@@ -1,4 +1,5 @@
 import { BoxProps, HStack } from '@chakra-ui/react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
 import { RiAddBoxLine } from 'react-icons/ri';
@@ -18,17 +19,15 @@ export const Header: FC<HeaderProps> = ({ selectedMenu, ...props }) => {
       <BaseText color="white" fontWeight="bold" w="100%">
         {selectedMenu === MENU_TYPE.UNREAD ? '読みたい漫画' : 'ウォッチリスト'}
       </BaseText>
-      <RiAddBoxLine
-        color="white"
-        size="2rem"
-        onClick={() =>
-          router.push(
-            selectedMenu === MENU_TYPE.UNREAD
-              ? 'searchUnreadBook'
-              : 'searchWatchList',
-          )
+      <Link
+        href={
+          selectedMenu === MENU_TYPE.UNREAD
+            ? 'searchUnreadBook'
+            : 'searchWatchList'
         }
-      />
+      >
+        <RiAddBoxLine color="white" size="2rem" />
+      </Link>
     </HStack>
   );
 };
