@@ -17,7 +17,14 @@ export const useLoginPageHook = () => {
     e.preventDefault();
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const result = await signInWithEmailAndPassword(auth, email, password);
+
+      const id = await result.user.getIdToken();
+
+      await fetch('/api/session', {
+        body: JSON.stringify({ id }),
+        method: 'POST',
+      });
 
       router.push('/');
       return {
