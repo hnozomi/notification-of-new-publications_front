@@ -29,7 +29,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user: any) => {
-      if (!user) setScreenLoading(true);
+      if (!user) return setScreenLoading(true);
       user.uid && onFetchAccount(user.uid);
     });
   }, []);

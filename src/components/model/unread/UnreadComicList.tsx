@@ -22,7 +22,7 @@ export const UnreadComicList: FC<Props> = ({
     <>
       {unreadComics ? (
         <BaseGrid
-          gap="2"
+          gap="5"
           mx="0.3rem"
           my="0.5rem"
           templateColumns="repeat(3, 1fr)"

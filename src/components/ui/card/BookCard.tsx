@@ -31,7 +31,7 @@ export const BookCard: FC<BookCardProps> = ({
           alt="漫画の表紙"
           borderRadius="lg"
           boxSize="100%"
-          h="8rem"
+          h="7rem"
           src={book.largeImageUrl}
         />
         <BaseText fontSize="12px" py="0.5rem">

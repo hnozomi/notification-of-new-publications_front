@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 
 import { useErrorToast, useSuccessToast } from '@/hooks';
 import { auth } from '@/lib';
@@ -13,7 +13,7 @@ export const useLoginPageHook = () => {
   const errorToast = useErrorToast();
   const successToast = useSuccessToast();
 
-  const login = async (e: any) => {
+  const login = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     try {
@@ -26,13 +26,15 @@ export const useLoginPageHook = () => {
         method: 'POST',
       });
 
+      successToast('成功', '登録に成功しました');
       router.push('/');
       return {
         message: 'ログインに成功しました',
         open: false,
         status: 'login_success',
       };
-    } catch (error) {
+    } catch (error: any) {
+      errorToast('登録に失敗しました', error.message);
       return {
         message: 'ログインに失敗しました',
         open: true,

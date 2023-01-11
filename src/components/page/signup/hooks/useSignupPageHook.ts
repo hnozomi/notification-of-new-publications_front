@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { push, ref } from 'firebase/database';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 
 import { useErrorToast, useSuccessToast } from '@/hooks';
 import { auth, database } from '@/lib';
@@ -14,7 +14,7 @@ export const useSignupPageHook = () => {
   const errorToast = useErrorToast();
   const successToast = useSuccessToast();
 
-  const signup = async (e: any) => {
+  const signup = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     try {
