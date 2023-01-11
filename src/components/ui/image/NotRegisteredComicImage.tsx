@@ -6,7 +6,7 @@ export const NotRegisteredComicImage = () => {
   return (
     <Stack alignItems="center" mt="4rem">
       <Image boxSize="10rem" src="/reading.png" />
-      <BaseText>読みたい漫画が登録されていません</BaseText>
+      <BaseText>読みたい漫画を登録しよう!!</BaseText>
     </Stack>
   );
 };

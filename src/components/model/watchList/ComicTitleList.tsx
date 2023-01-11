@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import { ComicTitlePanel } from '@/components/model/watchList/ComicTitlePanel';
+import { NotRegisteredWatchListImage } from '@/components/ui';
 import { WatchLists } from '@/entity';
 
 type Props = {
@@ -18,16 +19,22 @@ export const ComicTitleList: FC<Props> = ({
 }) => {
   return (
     <>
-      {watchLists?.map((watchList, index) => (
-        <ComicTitlePanel
-          deleteOnOpen={deleteOnOpen}
-          index={index}
-          key={watchList.title}
-          updateOnOpen={updateOnOpen}
-          watchList={watchList}
-          onUpdate={onUpdate}
-        />
-      ))}
+      {watchLists ? (
+        <>
+          {watchLists?.map((watchList, index) => (
+            <ComicTitlePanel
+              deleteOnOpen={deleteOnOpen}
+              index={index}
+              key={watchList.title}
+              updateOnOpen={updateOnOpen}
+              watchList={watchList}
+              onUpdate={onUpdate}
+            />
+          ))}
+        </>
+      ) : (
+        <NotRegisteredWatchListImage />
+      )}
     </>
   );
 };

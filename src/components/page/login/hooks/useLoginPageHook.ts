@@ -26,7 +26,7 @@ export const useLoginPageHook = () => {
         method: 'POST',
       });
 
-      successToast('成功', '登録に成功しました');
+      successToast('完了', 'ログインに成功しました');
       router.push('/');
       return {
         message: 'ログインに成功しました',
