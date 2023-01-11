@@ -9,6 +9,7 @@ export const NotRegisteredComicImage = () => {
       <Image
         alt="悩んでいる人の画像"
         height={200}
+        priority={true}
         src="/reading.png"
         width={250}
       />
