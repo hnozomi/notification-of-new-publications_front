@@ -16,9 +16,7 @@ export const Header: FC<HeaderProps> = ({ selectedMenu, ...props }) => {
   return (
     <HStack as="header" bgColor="#504CF9" p="1rem">
       <BaseText color="white" fontWeight="bold" w="100%">
-        {selectedMenu === MENU_TYPE.UNREAD
-          ? '読んでいない本'
-          : 'ウォッチリスト'}
+        {selectedMenu === MENU_TYPE.UNREAD ? '読みたい漫画' : 'ウォッチリスト'}
       </BaseText>
       <RiAddBoxLine
         color="white"
