@@ -15,7 +15,7 @@ export type Options = {
 
 //参照系API
 export const useAppQuery = <RequestQuery, Response>(
-  key: QueryKey,
+  key: QueryKey | string,
   request: (pathQuery?: PathQuery<RequestQuery>) => Promise<Response>,
   pathQuery?: PathQuery<RequestQuery>,
   options?: Options,
