@@ -7,7 +7,6 @@ import {
   ref,
   startAt,
 } from 'firebase/database';
-import { useRouter } from 'next/router';
 import { createContext, FC, ReactNode, useEffect, useState } from 'react';
 
 import { Account } from '@/entity';
@@ -25,15 +24,13 @@ export const AuthContext = createContext<LoginUserContextType>(
 type AuthProviderProps = { children: ReactNode };
 
 export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
-  const router = useRouter();
   const [loginAccount, setLoginAccount] = useState<Account>();
   const [screenLoading, setScreenLoading] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user: any) => {
-      user?.uid && onFetchAccount(user?.uid);
-
-      setScreenLoading(true);
+      if (!user) setScreenLoading(true);
+      user.uid && onFetchAccount(user.uid);
     });
   }, []);
 

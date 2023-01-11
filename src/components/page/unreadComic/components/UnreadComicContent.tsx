@@ -14,6 +14,7 @@ export const UnreadComicContent: FC = () => {
         unreadComics={unreadComics}
         onDeleteModalOpen={deleteModal.onDeleteModalOpen}
       />
+
       <UnreadComicDeleteModal
         isOpen={deleteModal.deleteIsOpen}
         targetComicTitle={targetComicTitle}
