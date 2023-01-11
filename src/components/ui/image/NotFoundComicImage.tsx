@@ -1,4 +1,5 @@
-import { Image, Stack } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
+import Image from 'next/image';
 
 import { BaseText } from '@/components/ui/text';
 
