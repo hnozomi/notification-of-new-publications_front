@@ -1,7 +1,7 @@
+import { SimpleGrid } from '@chakra-ui/react';
 import { FC } from 'react';
 
 import {
-  BaseGrid,
   BaseGridItem,
   BookCard,
   NotRegisteredComicImage,
@@ -21,11 +21,14 @@ export const UnreadComicList: FC<Props> = ({
   return (
     <>
       {unreadComics ? (
-        <BaseGrid
+        // <BaseGrid
+        <SimpleGrid
+          columns={[2, 10, 10]}
           gap="5"
+          minChildWidth="5rem"
           mx="0.3rem"
           my="0.5rem"
-          templateColumns="repeat(3, 1fr)"
+          // templateColumns="repeat(3, 1fr)"
           {...props}
         >
           {unreadComics.map((comic, index) => (
@@ -33,8 +36,9 @@ export const UnreadComicList: FC<Props> = ({
               <BookCard book={comic} index={index} onOpen={onDeleteModalOpen} />
             </BaseGridItem>
           ))}
-        </BaseGrid>
+        </SimpleGrid>
       ) : (
+        // </BaseGrid>
         <NotRegisteredComicImage />
       )}
     </>

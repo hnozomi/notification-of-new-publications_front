@@ -65,6 +65,7 @@ export const SignupContent: FC<SignupProps> = ({
                   </InputLeftElement>
                   <Input
                     placeholder="Password"
+                    type="password"
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </InputGroup>

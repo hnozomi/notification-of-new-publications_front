@@ -65,6 +65,7 @@ export const LoginContent: FC<LoginProps> = ({
                   </InputLeftElement>
                   <Input
                     placeholder="Password"
+                    type="password"
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </InputGroup>
