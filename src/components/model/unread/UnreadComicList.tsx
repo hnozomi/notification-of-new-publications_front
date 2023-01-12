@@ -21,24 +21,20 @@ export const UnreadComicList: FC<Props> = ({
   return (
     <>
       {unreadComics ? (
-        // <BaseGrid
         <SimpleGrid
-          columns={[2, 10, 10]}
+          columns={[3, 5, 10]}
           gap="5"
-          minChildWidth="5rem"
           mx="0.3rem"
           my="0.5rem"
-          // templateColumns="repeat(3, 1fr)"
           {...props}
         >
           {unreadComics.map((comic, index) => (
-            <BaseGridItem key={comic.title}>
+            <BaseGridItem key={comic.title} maxWidth="8rem">
               <BookCard book={comic} index={index} onOpen={onDeleteModalOpen} />
             </BaseGridItem>
           ))}
         </SimpleGrid>
       ) : (
-        // </BaseGrid>
         <NotRegisteredComicImage />
       )}
     </>
