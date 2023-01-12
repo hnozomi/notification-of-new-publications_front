@@ -1,6 +1,6 @@
 import { Flex, Stack, StackProps } from '@chakra-ui/react';
 import { FC } from 'react';
-import { AiTwotoneHome } from 'react-icons/ai';
+import { FaBook } from 'react-icons/fa';
 import { TbEyeglass } from 'react-icons/tb';
 
 import { BaseText } from '@/components/ui/text';
@@ -17,7 +17,6 @@ export const Footer: FC<FooterProps> = ({
   ...props
 }) => {
   return (
-    // TODO: フッターの高さ調整、画面サイズがおかしい
     <Flex
       bgColor="#FFFFFF"
       bottom="0"
@@ -35,8 +34,8 @@ export const Footer: FC<FooterProps> = ({
         w="100%"
         onClick={() => switchMenu('unread')}
       >
-        <AiTwotoneHome />
-        <BaseText>ホーム</BaseText>
+        <FaBook />
+        <BaseText>読みたい漫画</BaseText>
       </Stack>
       <Stack
         alignItems="center"
