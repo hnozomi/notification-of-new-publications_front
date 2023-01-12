@@ -16,12 +16,14 @@ export const SearchFooter: FC<Props> = ({ comics, onRegister }) => {
       boxShadow="0 -5px 3px #d6d6d6"
       justifyContent="center"
       position="absolute"
-      py="0.5rem"
+      py="1rem"
       width="100%"
     >
       <Button
         colorScheme="blue"
         disabled={comics.title === ''}
+        fontSize="1.5rem"
+        h="4rem"
         mx="1rem"
         onClick={() => onRegister(comics)}
       >

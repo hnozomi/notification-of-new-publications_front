@@ -23,7 +23,7 @@ export const Footer: FC<FooterProps> = ({
       bottom="0"
       boxShadow="0 -5px 3px #d6d6d6"
       position="absolute"
-      py="0.5rem"
+      py="1rem"
       width="100%"
       {...props}
     >
